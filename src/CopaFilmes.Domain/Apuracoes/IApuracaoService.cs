@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using CopaFilmes.Domain.Filmes;
+using System.Collections.Generic;
 
-namespace CopaFilmes.Domain.Filmes
+namespace CopaFilmes.Domain.Apuracoes
 {
     public interface IApuracaoService
     {

@@ -1,4 +1,6 @@
 ﻿using CopaFilmes.Domain.Filmes;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace CopaFilmes.Domain.Tests.Filmes
@@ -6,52 +8,145 @@ namespace CopaFilmes.Domain.Tests.Filmes
     public class FilmeServiceTest
     {
         [Fact]
-        public void ObterVencedor_Filme1Melhor_RetornaFilme1()
+        public void ApurarFinal_NotasDiferentes_OrdenaPorNota()
         {
             var filme1 = new Filme("ABC", 10);
             var filme2 = new Filme("DEF", 9);
 
-            var filmeService = new FilmeService();
-            var resultado = filmeService.ObterVencedor(filme1, filme2);
+            var filmes = new List<Filme>
+            {
+                filme1,
+                filme2
+            };
 
-            Assert.Same(filme1, resultado);
+            var filmeService = new FilmeService();
+            var resultado = filmeService.ApurarFinal(filmes);
+
+            Assert.Same(resultado.ElementAt(0), filme1);
+            Assert.Same(resultado.ElementAt(1), filme2);
         }
 
         [Fact]
-        public void ObterVencedor_Filme2Melhor_RetornaFilme2()
-        {
-            var filme1 = new Filme("ABC", 9);
-            var filme2 = new Filme("DEF", 10);
-
-            var filmeService = new FilmeService();
-            var resultado = filmeService.ObterVencedor(filme1, filme2);
-
-            Assert.Same(filme2, resultado);
-        }
-
-        [Fact]
-        public void ObterVencedor_Empate_RetornaFilme1QuandoForOrdemAlfabeticaMenor()
-        {
-            var filme1 = new Filme("ABC", 10);
-            var filme2 = new Filme("DEF", 10);
-
-            var filmeService = new FilmeService();
-            var resultado = filmeService.ObterVencedor(filme1, filme2);
-
-            Assert.Same(filme1, resultado);
-        }
-
-        [Fact]
-        public void ObterVencedor_Empate_RetornaFilme2QuandoForOrdemAlfabeticaMenor()
+        public void ApurarFinal_NotasIguais_OrdenaPorTitulo()
         {
             var filme1 = new Filme("DEF", 10);
             var filme2 = new Filme("ABC", 10);
 
-            var filmeService = new FilmeService();
-            var resultado = filmeService.ObterVencedor(filme1, filme2);
+            var filmes = new List<Filme>
+            {
+                filme1,
+                filme2
+            };
 
-            Assert.Same(filme2, resultado);
+            var filmeService = new FilmeService();
+            var resultado = filmeService.ApurarFinal(filmes);
+
+            Assert.Same(resultado.ElementAt(0), filme2);
+            Assert.Same(resultado.ElementAt(1), filme1);
         }
 
+        [Fact]
+        public void ApurarQuartasDeFinal_NotasDiferentes_ApuracaoOcorrePorNota()
+        {
+            var filmes = new List<Filme>
+            {
+                new Filme("Os Incríveis 2", 8.5),
+                new Filme("Jurassic World: Reino Ameaçado", 6.7),
+                new Filme("Oito Mulheres e um Segredo", 6.3),
+                new Filme("Hereditário", 7.8),
+                new Filme("Vingadores: Guerra Infinita", 8.8),
+                new Filme("Deadpool 2", 8.1),
+                new Filme("Han Solo: Uma História Star Wars", 7.2),
+                new Filme("Thor: Ragnarok", 7.9)
+            };
+
+            var filmeService = new FilmeService();
+            var resultado = filmeService.ApurarQuartasDeFinal(filmes);
+
+            Assert.Equal("Os Incríveis 2", resultado.ElementAt(0).Titulo);
+            Assert.Equal("Han Solo: Uma História Star Wars", resultado.ElementAt(1).Titulo);
+            Assert.Equal("Deadpool 2", resultado.ElementAt(2).Titulo);
+            Assert.Equal("Vingadores: Guerra Infinita", resultado.ElementAt(3).Titulo);
+        }
+
+        [Fact]
+        public void ApurarQuartasDeFinal_NotasIguais_ApuracaoOcorrePorTitulo()
+        {
+            var filmes = new List<Filme>
+            {
+                new Filme("Os Incríveis 2", 8.5),
+                new Filme("Jurassic World: Reino Ameaçado", 7.2),
+                new Filme("Oito Mulheres e um Segredo", 6.3),
+                new Filme("Hereditário", 7.8),
+                new Filme("Vingadores: Guerra Infinita", 7.8),
+                new Filme("Deadpool 2", 6.3),
+                new Filme("Han Solo: Uma História Star Wars", 7.2),
+                new Filme("Thor: Ragnarok", 8.5)
+            };
+
+            var filmeService = new FilmeService();
+            var resultado = filmeService.ApurarQuartasDeFinal(filmes);
+
+            Assert.Equal("Os Incríveis 2", resultado.ElementAt(0).Titulo);
+            Assert.Equal("Han Solo: Uma História Star Wars", resultado.ElementAt(1).Titulo);
+            Assert.Equal("Deadpool 2", resultado.ElementAt(2).Titulo);
+            Assert.Equal("Hereditário", resultado.ElementAt(3).Titulo);
+        }
+
+        [Fact]
+        public void ApurarSemiFinal_NotasDiferentes_ApuracaoOcorrePorNota()
+        {
+            var filmes = new List<Filme>
+            {
+                new Filme("Os Incríveis 2", 8.5),
+                new Filme("Jurassic World: Reino Ameaçado", 6.7),
+                new Filme("Oito Mulheres e um Segredo", 6.3),
+                new Filme("Hereditário", 7.8)
+            };
+
+            var filmeService = new FilmeService();
+            var resultado = filmeService.ApurarSemiFinal(filmes);
+
+            Assert.Equal("Os Incríveis 2", resultado.ElementAt(0).Titulo);
+            Assert.Equal("Hereditário", resultado.ElementAt(1).Titulo);
+        }
+
+        [Fact]
+        public void ApurarSemiFinal_NotasIguais_ApuracaoOcorrePorTitulo()
+        { 
+            var filmes = new List<Filme>
+            {
+                new Filme("Os Incríveis 2", 8.5),
+                new Filme("Jurassic World: Reino Ameaçado", 8.5),
+                new Filme("Oito Mulheres e um Segredo", 7.8),
+                new Filme("Hereditário", 7.8)
+            };
+
+            var filmeService = new FilmeService();
+            var resultado = filmeService.ApurarSemiFinal(filmes);
+
+            Assert.Equal("Jurassic World: Reino Ameaçado", resultado.ElementAt(0).Titulo);
+            Assert.Equal("Hereditário", resultado.ElementAt(1).Titulo);
+        }
+
+        [Fact]
+        public void PrepararFilmesParaApuracao_OrdenaFilmesPorTitulo()
+        {
+            var filmes = new List<Filme>
+            {
+                new Filme("Os Incríveis 2", 8.5),
+                new Filme("Jurassic World: Reino Ameaçado", 8.5),
+                new Filme("Oito Mulheres e um Segredo", 7.8),
+                new Filme("Hereditário", 7.8)
+            };
+
+            var filmeService = new FilmeService();
+            var resultado = filmeService.PrepararFilmesParaApuracao(filmes);
+
+            Assert.Equal("Hereditário", resultado.ElementAt(0).Titulo);
+            Assert.Equal("Jurassic World: Reino Ameaçado", resultado.ElementAt(1).Titulo);
+            Assert.Equal("Oito Mulheres e um Segredo", resultado.ElementAt(2).Titulo);
+            Assert.Equal("Os Incríveis 2", resultado.ElementAt(3).Titulo);
+        }
     }
 }
