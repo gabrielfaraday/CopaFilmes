@@ -1,4 +1,5 @@
 ﻿using CopaFilmes.Domain.Filmes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -43,6 +44,38 @@ namespace CopaFilmes.Domain.Tests.Filmes
 
             Assert.Same(resultado.ElementAt(0), filme2);
             Assert.Same(resultado.ElementAt(1), filme1);
+        }
+
+        [Fact]
+        public void ApurarFinal_MaisQueDoisFilmes_GeraExcecao()
+        {
+            var filme1 = new Filme("ABC", 10);
+            var filme2 = new Filme("DEF", 9);
+            var filme3 = new Filme("GHI", 8);
+
+            var filmes = new List<Filme>
+            {
+                filme1,
+                filme2,
+                filme3
+            };
+
+            var filmeService = new FilmeService();
+            Assert.Throws<ArgumentOutOfRangeException>("Quantidade de filmes.", () => filmeService.ApurarFinal(filmes));
+        }
+
+        [Fact]
+        public void ApurarFinal_MenosQueDoisFilmes_GeraExcecao()
+        {
+            var filme1 = new Filme("ABC", 10);
+
+            var filmes = new List<Filme>
+            {
+                filme1
+            };
+
+            var filmeService = new FilmeService();
+            Assert.Throws<ArgumentOutOfRangeException>("Quantidade de filmes.", () => filmeService.ApurarFinal(filmes));
         }
 
         [Fact]
@@ -94,6 +127,62 @@ namespace CopaFilmes.Domain.Tests.Filmes
         }
 
         [Fact]
+        public void ApurarQuartasDeFinal_MaisQueOitoFilmes_GeraExcecao()
+        {
+            var filme1 = new Filme("ABC", 10);
+            var filme2 = new Filme("DEF", 9);
+            var filme3 = new Filme("GHI", 8);
+            var filme4 = new Filme("ABC", 10);
+            var filme5 = new Filme("DEF", 9);
+            var filme6 = new Filme("GHI", 8);
+            var filme7 = new Filme("ABC", 10);
+            var filme8 = new Filme("DEF", 9);
+            var filme9 = new Filme("GHI", 8);
+
+            var filmes = new List<Filme>
+            {
+                filme1,
+                filme2,
+                filme3,
+                filme4,
+                filme5,
+                filme6,
+                filme7,
+                filme8,
+                filme9
+            };
+
+            var filmeService = new FilmeService();
+            Assert.Throws<ArgumentOutOfRangeException>("Quantidade de filmes.", () => filmeService.ApurarQuartasDeFinal(filmes));
+        }
+
+        [Fact]
+        public void ApurarQuartasDeFinal_MenosQueOitoFilmes_GeraExcecao()
+        {
+            var filme1 = new Filme("ABC", 10);
+            var filme2 = new Filme("DEF", 9);
+            var filme3 = new Filme("GHI", 8);
+            var filme4 = new Filme("ABC", 10);
+            var filme5 = new Filme("DEF", 9);
+            var filme6 = new Filme("GHI", 8);
+            var filme7 = new Filme("ABC", 10);
+
+            var filmes = new List<Filme>
+            {
+                filme1,
+                filme2,
+                filme3,
+                filme4,
+                filme5,
+                filme6,
+                filme7
+            };
+
+            var filmeService = new FilmeService();
+            Assert.Throws<ArgumentOutOfRangeException>("Quantidade de filmes.", () => filmeService.ApurarQuartasDeFinal(filmes));
+        }
+
+        [Fact]
         public void ApurarSemiFinal_NotasDiferentes_ApuracaoOcorrePorNota()
         {
             var filmes = new List<Filme>
@@ -130,6 +219,46 @@ namespace CopaFilmes.Domain.Tests.Filmes
         }
 
         [Fact]
+        public void ApurarSemiFinal_MaisQueQuatroFilmes_GeraExcecao()
+        {
+            var filme1 = new Filme("ABC", 10);
+            var filme2 = new Filme("DEF", 9);
+            var filme3 = new Filme("GHI", 8);
+            var filme4 = new Filme("ABC", 10);
+            var filme5 = new Filme("DEF", 9);
+
+            var filmes = new List<Filme>
+            {
+                filme1,
+                filme2,
+                filme3,
+                filme4,
+                filme5
+            };
+
+            var filmeService = new FilmeService();
+            Assert.Throws<ArgumentOutOfRangeException>("Quantidade de filmes.", () => filmeService.ApurarQuartasDeFinal(filmes));
+        }
+
+        [Fact]
+        public void ApurarSemiFinal_MenosQueQuatroFilmes_GeraExcecao()
+        {
+            var filme1 = new Filme("ABC", 10);
+            var filme2 = new Filme("DEF", 9);
+            var filme3 = new Filme("GHI", 8);
+
+            var filmes = new List<Filme>
+            {
+                filme1,
+                filme2,
+                filme3
+            };
+
+            var filmeService = new FilmeService();
+            Assert.Throws<ArgumentOutOfRangeException>("Quantidade de filmes.", () => filmeService.ApurarQuartasDeFinal(filmes));
+        }
+
+        [Fact]
         public void PrepararFilmesParaApuracao_OrdenaFilmesPorTitulo()
         {
             var filmes = new List<Filme>
@@ -147,6 +276,17 @@ namespace CopaFilmes.Domain.Tests.Filmes
             Assert.Equal("Jurassic World: Reino Ameaçado", resultado.ElementAt(1).Titulo);
             Assert.Equal("Oito Mulheres e um Segredo", resultado.ElementAt(2).Titulo);
             Assert.Equal("Os Incríveis 2", resultado.ElementAt(3).Titulo);
+        }
+
+        [Fact]
+        public void PrepararFilmesParaApuracao_ListaVazia_NaoPodeGerarErro()
+        {
+            var filmes = new List<Filme>();
+
+            var filmeService = new FilmeService();
+            var resultado = filmeService.PrepararFilmesParaApuracao(filmes);
+
+            Assert.Empty(resultado);
         }
     }
 }
