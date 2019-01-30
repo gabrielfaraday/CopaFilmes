@@ -1,4 +1,5 @@
-﻿using CopaFilmes.Domain.Filmes;
+﻿using CopaFilmes.Domain.Exceptions;
+using CopaFilmes.Domain.Filmes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,7 +62,7 @@ namespace CopaFilmes.Domain.Tests.Filmes
             };
 
             var filmeService = new FilmeService();
-            Assert.Throws<ArgumentOutOfRangeException>("Quantidade de filmes.", () => filmeService.ApurarFinal(filmes));
+            Assert.Throws<QuantidadeFilmesInvalida>("Quantidade de filmes.", () => filmeService.ApurarFinal(filmes));
         }
 
         [Fact]
@@ -75,7 +76,7 @@ namespace CopaFilmes.Domain.Tests.Filmes
             };
 
             var filmeService = new FilmeService();
-            Assert.Throws<ArgumentOutOfRangeException>("Quantidade de filmes.", () => filmeService.ApurarFinal(filmes));
+            Assert.Throws<QuantidadeFilmesInvalida>("Quantidade de filmes.", () => filmeService.ApurarFinal(filmes));
         }
 
         [Fact]
@@ -153,7 +154,7 @@ namespace CopaFilmes.Domain.Tests.Filmes
             };
 
             var filmeService = new FilmeService();
-            Assert.Throws<ArgumentOutOfRangeException>("Quantidade de filmes.", () => filmeService.ApurarQuartasDeFinal(filmes));
+            Assert.Throws<QuantidadeFilmesInvalida>("Quantidade de filmes.", () => filmeService.ApurarQuartasDeFinal(filmes));
         }
 
         [Fact]
@@ -179,7 +180,7 @@ namespace CopaFilmes.Domain.Tests.Filmes
             };
 
             var filmeService = new FilmeService();
-            Assert.Throws<ArgumentOutOfRangeException>("Quantidade de filmes.", () => filmeService.ApurarQuartasDeFinal(filmes));
+            Assert.Throws<QuantidadeFilmesInvalida>("Quantidade de filmes.", () => filmeService.ApurarQuartasDeFinal(filmes));
         }
 
         [Fact]
@@ -237,7 +238,7 @@ namespace CopaFilmes.Domain.Tests.Filmes
             };
 
             var filmeService = new FilmeService();
-            Assert.Throws<ArgumentOutOfRangeException>("Quantidade de filmes.", () => filmeService.ApurarQuartasDeFinal(filmes));
+            Assert.Throws<QuantidadeFilmesInvalida>("Quantidade de filmes.", () => filmeService.ApurarQuartasDeFinal(filmes));
         }
 
         [Fact]
@@ -255,7 +256,7 @@ namespace CopaFilmes.Domain.Tests.Filmes
             };
 
             var filmeService = new FilmeService();
-            Assert.Throws<ArgumentOutOfRangeException>("Quantidade de filmes.", () => filmeService.ApurarQuartasDeFinal(filmes));
+            Assert.Throws<QuantidadeFilmesInvalida>("Quantidade de filmes.", () => filmeService.ApurarQuartasDeFinal(filmes));
         }
 
         [Fact]

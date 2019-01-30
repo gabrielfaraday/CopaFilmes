@@ -1,4 +1,4 @@
-﻿using System;
+﻿using CopaFilmes.Domain.Exceptions;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,7 +9,7 @@ namespace CopaFilmes.Domain.Filmes
         public IEnumerable<Filme> ApurarFinal(IEnumerable<Filme> filmes)
         {
             if (filmes.Count() != 2)
-                throw new ArgumentOutOfRangeException("Quantidade de filmes.", filmes.Count(), "Deve conter 2 filmes para apurar a final.");
+                throw new QuantidadeFilmesInvalida("Quantidade de filmes.", filmes.Count(), "Deve conter 2 filmes para apurar a final.");
 
             return filmes.OrderByDescending(x => x.Nota).ThenBy(x => x.Titulo);
         }
@@ -17,7 +17,7 @@ namespace CopaFilmes.Domain.Filmes
         public IEnumerable<Filme> ApurarQuartasDeFinal(IEnumerable<Filme> filmes)
         {
             if (filmes.Count() != 8)
-                throw new ArgumentOutOfRangeException("Quantidade de filmes.", filmes.Count(), "Deve conter 8 filmes para apurar as quartas de final.");
+                throw new QuantidadeFilmesInvalida("Quantidade de filmes.", filmes.Count(), "Deve conter 8 filmes para apurar as quartas de final.");
 
             var vencedorQuartas1 = ObterVencedor(filmes.ElementAt(0), filmes.ElementAt(7));
             var vencedorQuartas2 = ObterVencedor(filmes.ElementAt(1), filmes.ElementAt(6));
@@ -36,7 +36,7 @@ namespace CopaFilmes.Domain.Filmes
         public IEnumerable<Filme> ApurarSemiFinal(IEnumerable<Filme> filmes)
         {
             if (filmes.Count() != 4)
-                throw new ArgumentOutOfRangeException("Quantidade de filmes.", filmes.Count(), "Deve conter 4 filmes para apurar a semi final.");
+                throw new QuantidadeFilmesInvalida("Quantidade de filmes.", filmes.Count(), "Deve conter 4 filmes para apurar a semi final.");
 
             var vencedorSemi1 = ObterVencedor(filmes.ElementAt(0), filmes.ElementAt(1));
             var vencedorSemi2 = ObterVencedor(filmes.ElementAt(2), filmes.ElementAt(3));
