@@ -6,7 +6,6 @@ using System.Linq;
 
 namespace CopaFilmes.Api.Controllers
 {
-    [ApiConventionType(typeof(DefaultApiConventions))]
     [Route("api/[controller]")]
     [ApiController]
     public class ApuracaoController : ControllerBase
@@ -19,6 +18,7 @@ namespace CopaFilmes.Api.Controllers
         }
 
         [HttpPost]
+        [ApiConventionMethod(typeof(DefaultApiConventions), nameof(DefaultApiConventions.Post))]
         public ActionResult<List<Filme>> Get([FromBody]List<Filme> filmes)
         {
             return _apuracaoService.ApurarEliminatorias(filmes).ToList();
