@@ -21,7 +21,7 @@ namespace CopaFilmes.Api.Controllers
         [ApiConventionMethod(typeof(DefaultApiConventions), nameof(DefaultApiConventions.Post))]
         public ActionResult<List<Filme>> Get([FromBody]List<Filme> filmes)
         {
-            return _apuracaoService.ApurarEliminatorias(filmes).ToList();
+            return Ok(_apuracaoService.ApurarEliminatorias(filmes).ToList());
         }
     }
 }
