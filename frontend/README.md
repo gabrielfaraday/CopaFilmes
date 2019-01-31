@@ -1,2 +1,0 @@
-# Copa Filmes - Frontend
-
