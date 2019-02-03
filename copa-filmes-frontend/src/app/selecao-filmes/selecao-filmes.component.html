@@ -14,9 +14,13 @@
       <button type="button" class="btn btn-dark">GERAR MEU CAMPEONATO</button>
     </div>
   </div>
-  <div class="row" style="background-color: red;">
-    <div class="col-12">
-      <span class="contador-selecao">asfaf</span>
+  <div class="row">
+    <div class="col-12 lista-filmes">
+      <div *ngFor="let filme of filmes; let i = index" class="detalhe-filme">
+        <input type="checkbox" class="custom-check" name="options" id="{{i}}" value="{{filme.id}}" [checked]="filme.selecionado" (change)="filmeSelecionado(filme, $event)"
+          [disabled]="" />
+        <label for="{{i}}">{{filme.titulo}} ({{filme.ano}})</label>
+      </div>
     </div>
   </div>
 </div>
