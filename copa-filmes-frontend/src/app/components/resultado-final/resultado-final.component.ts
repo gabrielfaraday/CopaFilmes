@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-resultado-final',
@@ -11,7 +12,7 @@ export class ResultadoFinalComponent implements OnInit {
   public campeao: string;
   public vice: string;
 
-  public constructor(private route: ActivatedRoute) {
+  public constructor(private route: ActivatedRoute, private router: Router) {
     this.route.queryParams.subscribe(params => {
       this.campeao = params["campeao"];
       this.vice = params["vice"];
@@ -19,6 +20,10 @@ export class ResultadoFinalComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  gerarNovoCampeonato(): void{
+    this.router.navigate(["selecao-filmes"]);
   }
 
 }

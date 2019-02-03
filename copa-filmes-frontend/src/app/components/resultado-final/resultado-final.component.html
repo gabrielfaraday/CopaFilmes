@@ -1,5 +1,36 @@
-Campeão: {{campeao}}
+<div class="container">
+    <div class="jumbotron">
+        <h3>CAMPEONATO DE FILMES</h3>
+        <h1 class="display-4">Resultado Final</h1>
+        <hr>
+        <p>Veja o resultado final do Campeonato de filmes de forma simples e rápida.</p>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="posicao float-left text-center">
+                <span>1º</span>
+            </div>
+            <div class="nome-filme float-right">
+                <span>{{campeao}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="posicao float-left text-center">
+                <span>2º</span>
+            </div>
+            <div class="nome-filme float-right">
+                <span>{{vice}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
 
-<br/><br/>
-
-Vice: {{vice}}
+        </div>
+        <div class="col-6 text-right">
+            <button type="button" class="btn btn-dark" (click)="gerarNovoCampeonato()">GERAR NOVO CAMPEONATO</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+.posicao {
+    background-color: rgb(110,110,110);
+    font-size: 30pt;
+    color: white;
+    font-weight: 300;
+    width: 10%;
+    padding: 2% 4%;
+    height: 100px;
+}
+
+.nome-filme {
+    background-color: white;
+    font-size: 15pt;
+    color: rgb(110,110,110);
+    width: 90%;
+    padding: 3% 4%;
+    height: 100px;
+    font-weight: 500;
+}
