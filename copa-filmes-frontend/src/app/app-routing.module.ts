@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SelecaoFilmesComponent } from './selecao-filmes/selecao-filmes.component';
-import { ResultadoFinalComponent } from './resultado-final/resultado-final.component';
+import { SelecaoFilmesComponent } from './components/selecao-filmes/selecao-filmes.component';
+import { ResultadoFinalComponent } from './components/resultado-final/resultado-final.component';
 
 const routes: Routes = [
   { path: '', component: SelecaoFilmesComponent },

@@ -1,22 +1,33 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Filme } from './filme';
 import { environment } from 'src/environments/environment';
+import { Filme } from '../models/filme';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
 })
-export class SelecaoFilmesService {
+export class CopaFilmesService {
 
   constructor(private http: HttpClient) { }
 
   obterFilmes(): Observable<Filme[]> {
     return this.http.get<Filme[]>(environment.url_api_filmes)
       .pipe(
-        catchError(this.handleError('getHeroes', []))
+        catchError(this.handleError('obterFilmes', []))
+      );
+  }
+
+  apurarResultado(filmes: Filme[]): Observable<Filme[]> {
+    return this.http.post<Filme[]>(environment.url_api_apuracao, filmes, httpOptions)
+      .pipe(
+        catchError(this.handleError('apurarResultado', []))
       );
   }
 

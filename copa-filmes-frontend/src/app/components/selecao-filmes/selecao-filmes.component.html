@@ -8,17 +8,18 @@
   </div>
   <div class="row">
     <div class="col-6">
-      <span class="contador-selecao">Selecionados 0 de 8 filmes</span>
+      <span class="contador-selecao">Selecionados {{totalSelecionado}} de 8 filmes</span>
     </div>
     <div class="col-6 text-right">
-      <button type="button" class="btn btn-dark">GERAR MEU CAMPEONATO</button>
+      <button type="button" class="btn btn-dark" [disabled]="!totalSelecionadoValido()" (click)="gerarMeuCampeonato()">GERAR MEU
+        CAMPEONATO</button>
     </div>
   </div>
   <div class="row">
     <div class="col-12 lista-filmes">
       <div *ngFor="let filme of filmes; let i = index" class="detalhe-filme">
-        <input type="checkbox" class="custom-check" name="options" id="{{i}}" value="{{filme.id}}" [checked]="filme.selecionado" (change)="filmeSelecionado(filme, $event)"
-          [disabled]="" />
+        <input type="checkbox" class="checkbox-filme" name="options" id="{{i}}" value="{{filme.id}}" [checked]="filme.selecionado"
+          (change)="filmeSelecionado(filme, $event)" [disabled]="totalSelecionadoValido() && !filme.selecionado" />
         <label for="{{i}}">{{filme.titulo}} ({{filme.ano}})</label>
       </div>
     </div>

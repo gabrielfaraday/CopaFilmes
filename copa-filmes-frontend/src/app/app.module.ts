@@ -4,8 +4,8 @@ import { HttpClientModule }    from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SelecaoFilmesComponent } from './selecao-filmes/selecao-filmes.component';
-import { ResultadoFinalComponent } from './resultado-final/resultado-final.component';
+import { SelecaoFilmesComponent } from './components/selecao-filmes/selecao-filmes.component';
+import { ResultadoFinalComponent } from './components/resultado-final/resultado-final.component';
 
 @NgModule({
   declarations: [
