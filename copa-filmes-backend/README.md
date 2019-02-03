@@ -39,3 +39,17 @@ Para executar a aplicação via linha de comando, acesse a pasta raiz onde está
 URL para verificação: https://localhost:5001/api/status
 
 Swagger: https://localhost:5001/swagger
+
+### Docker
+
+Para executar a aplicação via Docker, na linha de comando acesse a pasta raiz onde está a solution e execute o seguinte comando:
+
+    docker build . -t copa-filmes
+
+Após a conclusão do processo com sucesso, execute:
+
+    docker run -d -p 8080:80 copa-filmes
+
+URL para verificação: https://localhost:8080/api/status
+
+Swagger: https://localhost:8080/swagger

@@ -8,7 +8,9 @@ Acessar as pastas para verificar.
 
 ## Próximos passos
 
-Devido ao tempo, diversas coisas não foram incluidas por enquanto neste projeto. Segue a minha visão de próximos passos identificados e sugeridos como necessários para um projeto bem executado:
+Devido ao tempo, diversas coisas não foram incluidas por enquanto neste projeto.
+
+Segue a minha visão de próximos passos identificados e sugeridos como necessários para um projeto bem executado:
 
     - Criar Unit Tests no Frontend.
     - Criar testes de comportamento para as interfaces do Frontend (BDD com Selenium).
