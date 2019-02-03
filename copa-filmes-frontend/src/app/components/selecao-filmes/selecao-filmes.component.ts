@@ -27,7 +27,9 @@ export class SelecaoFilmesComponent implements OnInit {
 
   obterFilmes(): void {
     this.copaFilmesService.obterFilmes()
-      .subscribe(filmes => this.onObterFilmesComplete(filmes));
+      .subscribe(
+        filmes => this.onObterFilmesComplete(filmes),
+        erro => this.reportarErro(erro));
   }
 
   private onObterFilmesComplete(filmes: Filme[]): void {
@@ -50,7 +52,9 @@ export class SelecaoFilmesComponent implements OnInit {
     let filmesSelecionados: Filme[] = this.obterFilmesSelecionados();
 
     this.copaFilmesService.apurarResultado(filmesSelecionados)
-      .subscribe(filmes => this.onGerarMeuCampeonatoComplete(filmes));
+      .subscribe(
+        filmes => this.onGerarMeuCampeonatoComplete(filmes),
+        erro => this.reportarErro(erro));
   }
 
   private obterFilmesSelecionados(): Filme[] {
@@ -67,5 +71,10 @@ export class SelecaoFilmesComponent implements OnInit {
 
     this.spinner.hide();
     this.router.navigate(["resultado-final"], navigationExtras);
+  }
+
+  private reportarErro(erro: any): void {
+    alert('Ocorreu alguma falha na aplicação, tente novamente.');
+    this.spinner.hide();
   }
 }
