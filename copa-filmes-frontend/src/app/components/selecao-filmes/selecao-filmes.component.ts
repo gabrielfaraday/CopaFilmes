@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from "@angular/router";
+import { NgxSpinnerService } from 'ngx-spinner';
 
 import { Filme } from 'src/app/models/filme';
 import { CopaFilmesService } from 'src/app/services/copa-filmes.service';
@@ -14,16 +15,24 @@ export class SelecaoFilmesComponent implements OnInit {
   filmes: Filme[];
   totalSelecionado: number;
 
-  constructor(private copaFilmesService: CopaFilmesService, private router: Router) { }
+  constructor(private copaFilmesService: CopaFilmesService,
+    private router: Router,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
+    this.spinner.show();
     this.totalSelecionado = 0;
     this.obterFilmes();
   }
 
   obterFilmes(): void {
     this.copaFilmesService.obterFilmes()
-      .subscribe(filmes => this.filmes = filmes);
+      .subscribe(filmes => this.onObterFilmesComplete(filmes));
+  }
+
+  private onObterFilmesComplete(filmes: Filme[]): void {
+    this.filmes = filmes;
+    this.spinner.hide();
   }
 
   filmeSelecionado(filme: Filme, e: any): void {
@@ -36,6 +45,8 @@ export class SelecaoFilmesComponent implements OnInit {
   }
 
   gerarMeuCampeonato(): void {
+    this.spinner.show();
+
     let filmesSelecionados: Filme[] = this.obterFilmesSelecionados();
 
     this.copaFilmesService.apurarResultado(filmesSelecionados)
@@ -53,6 +64,8 @@ export class SelecaoFilmesComponent implements OnInit {
         "vice": filmes[1].titulo
       }
     };
+
+    this.spinner.hide();
     this.router.navigate(["resultado-final"], navigationExtras);
   }
 }
