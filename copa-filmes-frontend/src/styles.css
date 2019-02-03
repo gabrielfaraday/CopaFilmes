@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: rgb(168, 168, 168);
+}
+
+.container{
+    padding-top: 5%;
+}
+
+.row {
+    margin-bottom: 2%;
+}
+
+.btn {
+    padding: 2% 6%;
+    font-size: 7pt;
+    font-weight: bold;
+}
+
+.jumbotron{
+    background-color: rgb(110,110,110);
+    text-align: center;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+    .jumbotron > h3 {
+        font-size: 10pt;
+        color: rgb(166, 166, 166);
+    }
+
+    .jumbotron > h1 {
+        font-size: 20pt;
+        font-weight: bold;
+        color: white;
+    }
+
+    .jumbotron > hr {
+        border: 1px solid rgb(166, 166, 166);
+        width: 3%;
+    }
+
+    .jumbotron > p {
+        font-size: 9pt;
+        font-weight: bold;
+        color: white;
+    }

@@ -3,10 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SelecaoFilmesComponent } from './selecao-filmes/selecao-filmes.component';
+import { ResultadoFinalComponent } from './resultado-final/resultado-final.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SelecaoFilmesComponent,
+    ResultadoFinalComponent
   ],
   imports: [
     BrowserModule,
