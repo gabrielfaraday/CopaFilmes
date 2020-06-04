@@ -1,6 +1,7 @@
 using CopaFilmes.Api.Filters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 
 namespace CopaFilmes.Api.Configs
 {
@@ -8,11 +9,16 @@ namespace CopaFilmes.Api.Configs
     {
         public static void Add(IServiceCollection services)
         {
-            services.AddControllers(options =>
+            services
+            .AddControllers(options =>
             {
                 options.Filters.Add(new ServiceFilterAttribute(typeof(GlobalExceptionHandlingFilter)));
             })
-            .AddNewtonsoftJson();
+            .AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+            });
         }
     }
 }

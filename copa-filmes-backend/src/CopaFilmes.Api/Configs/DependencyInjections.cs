@@ -1,4 +1,5 @@
-﻿using CopaFilmes.Api.Filters;
+﻿using CopaFilmes.Api.ExternalCalls.Filmes;
+using CopaFilmes.Api.Filters;
 using CopaFilmes.Domain.Apuracoes;
 using CopaFilmes.Domain.Filmes;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +11,7 @@ namespace CopaFilmes.Api.Configs
         public static void RegisterServices(IServiceCollection services)
         {
             services.AddScoped<GlobalExceptionHandlingFilter>();
+            services.AddScoped<IFilmeHttpExternalCall, FilmeHttpExternalCall>();
             services.AddScoped<IFilmeService, FilmeService>();
             services.AddScoped<IApuracaoService, ApuracaoService>();
         }

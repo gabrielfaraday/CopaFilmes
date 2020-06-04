@@ -1,4 +1,5 @@
-﻿using CopaFilmes.Domain.Apuracoes;
+﻿using CopaFilmes.Api.ExternalCalls.Filmes;
+using CopaFilmes.Domain.Apuracoes;
 using CopaFilmes.Domain.Filmes;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace CopaFilmes.Api.Controllers.V1
     {
         readonly IApuracaoService _apuracaoService;
 
-        public ApuracaoController(IApuracaoService apuracaoService)
+        public ApuracaoController(IApuracaoService apuracaoService, IFilmeHttpExternalCall filmeHttpExternalCall)
         {
             _apuracaoService = apuracaoService;
         }

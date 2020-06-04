@@ -13,5 +13,12 @@
             <response code="400">Caso ocorra alguma falha de negocio</response>
             <response code="500">Caso ocorra alguma falha de sistema</response>
         </member>
+        <member name="M:CopaFilmes.Api.Controllers.V1.FilmeController.ObterFilmes">
+            <summary>
+            Retorna a lista completa de filmes
+            </summary>
+            <response code="200">Caso a solicitação ocorra com sucesso</response>
+            <response code="500">Caso ocorra alguma falha de sistema</response>
+        </member>
     </members>
 </doc>

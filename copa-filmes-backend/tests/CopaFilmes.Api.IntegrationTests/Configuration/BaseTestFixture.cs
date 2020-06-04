@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Net.Http;
 
@@ -12,7 +13,15 @@ namespace CopaFilmes.Api.IntegrationTests.Configuration
 
         public BaseTestFixture()
         {
-            Server = new TestServer(new WebHostBuilder().UseStartup<Startup>());
+            Server = new TestServer(new WebHostBuilder()    
+                .UseStartup<Startup>()
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                    {
+                        config.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
+                            .AddJsonFile("appsettings.json", true);
+                        config.AddEnvironmentVariables();
+                    }));
+
             Client = Server.CreateClient();
         }
 

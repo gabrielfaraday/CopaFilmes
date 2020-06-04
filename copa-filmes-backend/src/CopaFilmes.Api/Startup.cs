@@ -22,6 +22,7 @@ namespace CopaFilmes.Api
             services.AddCors();
             Configs.Controllers.Add(services);
             services.AddHealthChecks();
+            Configs.HttpClients.Add(services, Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IApiVersionDescriptionProvider provider)
