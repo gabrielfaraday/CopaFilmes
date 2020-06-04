@@ -1,34 +1,32 @@
 # Copa Filmes - Backend
 
-A aplicação backend foi desenvolvida com ASP.NET Core 2.2.
+A aplicação backend foi desenvolvida com ASP.NET Core 3.1.
 
 ## Testes
-
-### Visual Studio
-
-Para executar os testes via Visual Studio (2017+), abra a solution no Visual Studio e abra o menu 'Test > Windows > Test Explorer'.
-
-Na janela que se abre, clicar em 'Run All'.
 
 ### CLI
 
 Para executar os testes via CLI, acesse na linha de comando a pasta raiz onde está a solution e execute os seguintes comandos:
 
-    dotnet test tests/CopaFilmes.Domain.Tests/
-    dotnet test tests/CopaFilmes.Api.IntegrationTests/
+    dotnet test
+
+Para executar os teste e gerar um relatório de coverage execute:
+
+    dotnet test //p:CollectCoverage=true //p:CoverletOutputFormat=OpenCover (para Windows)
+
+Para visualizar o relatório completo instale a tool necessária:
+
+    dotnet tool install -g dotnet-reportgenerator-globaltool
+    dotnet tool install dotnet-reportgenerator-globaltool --tool-path tools
+
+E gere o report:
+
+    reportgenerator "-reports:tests\coverage.opencover.xml" "-targetdir:tests\reports" "-sourcedirs:src/" -reporttypes:HTML;Cobertura
+
+O report estará diposnivel em tests/reports/index.html
 
  
 ## Subindo a aplicação
-
-### Visual Studio
-
-Para executar a aplicação, abra a solution no Visual Studio (2017+) e pressione a tecla F5.
-
-- OBS: é necessário selecionar o projeto CopaFilmes.Api como 'Startup Project' no Visual Studio.
-
-URL para verificação: https://localhost:44316/api/status
-
-Swagger: https://localhost:44316/swagger
 
 ### CLI
 
@@ -36,9 +34,9 @@ Para executar a aplicação via linha de comando, acesse a pasta raiz onde está
 
     dotnet run -p src/CopaFilmes.Api/
 
-URL para verificação: https://localhost:5001/api/status
+Health check: http://localhost:5000/health
 
-Swagger: https://localhost:5001/swagger
+Swagger: http://localhost:5000/swagger
 
 ### Docker
 
@@ -48,8 +46,8 @@ Para executar a aplicação via Docker, na linha de comando acesse a pasta raiz 
 
 Após a conclusão do processo com sucesso, execute:
 
-    docker run -d -p 8080:80 copa-filmes
+    docker run -d -p 5000:5000 copa-filmes
 
-URL para verificação: https://localhost:8080/api/status
+Health check: http://localhost:5000/health
 
-Swagger: https://localhost:8080/swagger
+Swagger: http://localhost:5000/swagger

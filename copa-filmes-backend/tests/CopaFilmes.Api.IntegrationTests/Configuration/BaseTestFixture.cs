@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using System;
 using System.Net.Http;
@@ -13,10 +12,7 @@ namespace CopaFilmes.Api.IntegrationTests.Configuration
 
         public BaseTestFixture()
         {
-            Server = new TestServer(
-                WebHost.CreateDefaultBuilder()
-                    .UseStartup<Startup>());
-
+            Server = new TestServer(new WebHostBuilder().UseStartup<Startup>());
             Client = Server.CreateClient();
         }
 

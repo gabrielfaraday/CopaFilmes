@@ -29,7 +29,7 @@ namespace CopaFilmes.Api.IntegrationTests.Controllers
             };
 
             var response = await Server
-                .CreateRequest("api/apuracao")
+                .CreateRequest("v1/api/apuracao")
                 .And(req => req.Content = GenerateRequestContent(filmes))
                 .PostAsync();
 
@@ -61,7 +61,7 @@ namespace CopaFilmes.Api.IntegrationTests.Controllers
             };
 
             var response = await Server
-                .CreateRequest("api/apuracao")
+                .CreateRequest("v1/api/apuracao")
                 .And(req => req.Content = GenerateRequestContent(filmes))
                 .PostAsync();
 
@@ -80,7 +80,7 @@ namespace CopaFilmes.Api.IntegrationTests.Controllers
             };
 
             var response = await Server
-                .CreateRequest("api/apuracao")
+                .CreateRequest("v1/api/apuracao")
                 .And(req => req.Content = GenerateRequestContent(filmes))
                 .PostAsync();
 

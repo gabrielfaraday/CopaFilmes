@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CopaFilmes.Api</name>
+    </assembly>
+    <members>
+        <member name="M:CopaFilmes.Api.Controllers.V1.ApuracaoController.ApurarResultado(System.Collections.Generic.List{CopaFilmes.Domain.Filmes.Filme})">
+            <summary>
+            Realiza a apuração das eliminatórias com base nos filmes recebidos e retorna o campeão e vice campeão
+            </summary>
+            <param name="filmes">Lista de filmes participantes</param>
+            <response code="200">Caso a apuração ocorra com sucesso</response>
+            <response code="400">Caso ocorra alguma falha de negocio</response>
+            <response code="500">Caso ocorra alguma falha de sistema</response>
+        </member>
+    </members>
+</doc>

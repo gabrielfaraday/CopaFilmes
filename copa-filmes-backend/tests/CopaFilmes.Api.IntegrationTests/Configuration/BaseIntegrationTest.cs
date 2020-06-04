@@ -12,13 +12,11 @@ namespace CopaFilmes.Api.IntegrationTests.Configuration
     {
         protected readonly TestServer Server;
         protected readonly HttpClient Client;
-
         protected BaseTestFixture Fixture { get; }
 
         protected BaseIntegrationTest(BaseTestFixture fixture)
         {
             Fixture = fixture;
-
             Server = fixture.Server;
             Client = fixture.Client;
         }
