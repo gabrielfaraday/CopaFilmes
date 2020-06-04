@@ -18,14 +18,14 @@ export class CopaFilmesService {
   constructor(private http: HttpClient) { }
 
   obterFilmes(): Observable<Filme[]> {
-    return this.http.get<Filme[]>(environment.url_api_filmes)
+    return this.http.get<Filme[]>(`${environment.url_base_api}/listar-filmes`)
       .pipe(
         catchError(this.handleError('obterFilmes', []))
       );
   }
 
   apurarResultado(filmes: Filme[]): Observable<Filme[]> {
-    return this.http.post<Filme[]>(environment.url_api_apuracao, filmes, httpOptions)
+    return this.http.post<Filme[]>(`${environment.url_base_api}/apuracao`, filmes, httpOptions)
       .pipe(
         catchError(this.handleError('apurarResultado', []))
       );
