@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  front:
+    build: ./copa-filmes-frontend
+    depends_on:
+      - back
+    ports:
+      - "8080:80"
+    networks:
+      - copa-network
+
+  back:
+    build: ./copa-filmes-backend
+    ports:
+      - "5000:5000"
+    networks:
+      - copa-network
+
+networks: 
+  copa-network:
+    driver: bridge

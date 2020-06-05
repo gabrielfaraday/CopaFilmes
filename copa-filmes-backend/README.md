@@ -42,11 +42,11 @@ Swagger: http://localhost:5000/swagger
 
 Para executar a aplicação via Docker, na linha de comando acesse a pasta raiz onde está a solution e execute o seguinte comando:
 
-    docker build . -t copa-filmes
+    docker build . -t copa-back
 
 Após a conclusão do processo com sucesso, execute:
 
-    docker run -d -p 5000:5000 copa-filmes
+    docker run -d -p 5000:5000 copa-back
 
 Health check: http://localhost:5000/health
 

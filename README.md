@@ -6,14 +6,12 @@ Cada uma dessas frentes estão em suas respectivas pastas com indicações indiv
 
 Acessar as pastas para verificar.
 
-## Próximos passos
+## Subindo a aplicação
 
-Devido ao tempo, diversas coisas não foram incluidas por enquanto neste projeto.
+### Docker
 
-Segue a minha visão de próximos passos identificados e sugeridos como necessários para um projeto bem executado:
+Para executar a aplicação (back e front) via Docker, na linha de comando acesse a pasta raiz e execute o seguinte comando:
 
-    - Criar Unit Tests no Frontend.
-    - Criar testes de comportamento para as interfaces do Frontend (BDD com Selenium).
-    - Utilizar docker para subir ambas as frentes para facilitar os testes, validações, etc.
-    - Configurar CI/CD para o projeto para facilitar a integração, validação e deploy do projeto.
-    - Publicar a aplicação completa em algum serviço de nuvem para validação da aplicação final funcionando.
+    docker-compose up -d
+
+URL para verificação: http://localhost:8080

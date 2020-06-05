@@ -3,7 +3,6 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1.300-alpine3.11 AS build-env
 WORKDIR /app
 
 COPY . ./
-
 RUN dotnet publish -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1.4-alpine3.11

@@ -4,11 +4,12 @@ A aplicação frontend foi desenvolvida com Angular 7.
 
 ## Subindo a aplicação
 
+### CLI
 
-Para executar a aplicação, abra a pasta no Visual Studio Code e no terminal execute os seguintes comandos:
+Para executar a aplicação via linha de comando, acesse a pasta raiz e execute o seguinte comando:
 
     npm install
 
     ng serve -o
 
-URL para verificação: https://localhost:4200
+URL para verificação: http://localhost:4200
