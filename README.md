@@ -1,3 +1,5 @@
+![.CI/CD](https://github.com/gabrielfbarros/CopaFilmes/workflows/.NET%20Core/badge.svg)
+
 # Copa Filmes
 
 A solução consiste de duas partes - frontend e backend.
