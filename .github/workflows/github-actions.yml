@@ -1,4 +1,4 @@
-name: .NET Core
+name: CI/CD
 
 on:
   push:
@@ -13,14 +13,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: build backend
+    - name: build & push backend
       uses: docker/build-push-action@v1.1.0
       with: 
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-        repository: gabrielfbarros/copa-filmes
-        # Path to the build context
+        repository: ${{ secrets.DOCKER_HUB_REPO }}
         path: ./copa-filmes-backend
-        # Path to the Dockerfile (Default is '{path}/Dockerfile')
-        #dockerfile: # optional
         tag_with_ref: true
