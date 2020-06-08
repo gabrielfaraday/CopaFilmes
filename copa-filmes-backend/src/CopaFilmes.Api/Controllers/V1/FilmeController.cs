@@ -18,7 +18,7 @@ namespace CopaFilmes.Api.Controllers.V1
         }
 
         /// <summary>
-        /// Retorna a lista completa de filmes
+        /// Retorna a lista completa de filmes...
         /// </summary>
         /// <response code="200">Caso a solicitação ocorra com sucesso</response>
         /// <response code="500">Caso ocorra alguma falha de sistema</response>
