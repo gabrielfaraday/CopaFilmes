@@ -27,6 +27,8 @@ jobs:
     needs: build
 
     steps:
+    - uses: actions/checkout@v2
+      
     - name: setup .NET Core SDK
       uses: actions/setup-dotnet@v1.5.0
       with:
