@@ -15,3 +15,7 @@ Para executar a aplicação (back e front) via Docker, na linha de comando acess
     docker-compose up -d
 
 URL para verificação: http://localhost:8080
+
+Para interromper as aplicações execute:
+
+    docker-compose down
