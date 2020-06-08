@@ -8,13 +8,12 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
       
-    - name: build & push backend to docker hub
+    - name: build e push do backend para Docker HUB
       uses: docker/build-push-action@v1.1.0
       with: 
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
@@ -22,11 +21,23 @@ jobs:
         repository: ${{ secrets.DOCKER_HUB_REPO }}
         path: ./copa-filmes-backend
         tag_with_ref: true
-        
-  deploy:
-    
+  
+  test:
     runs-on: ubuntu-latest
     needs: build
+
+    steps:
+    - name: setup .NET Core SDK
+      uses: actions/setup-dotnet@v1.5.0
+      with:
+        dotnet-version: 3.1
+        
+    - name: executa testes
+      run: dotnet test copa-filmes-backend/tests
+        
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
     
     steps:
     - name: login no azure
@@ -34,7 +45,7 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         
-    - name: deploy para azure web apps
+    - name: deploy do backend para azure web apps
       uses: Azure/webapps-deploy@v2
       with:
         app-name: api-copa-filmes
