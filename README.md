@@ -1,4 +1,4 @@
-![.CI/CD](https://github.com/gabrielfbarros/CopaFilmes/workflows/.NET%20Core/badge.svg)
+![CI/CD](https://github.com/gabrielfbarros/CopaFilmes/workflows/CI/CD/badge.svg)
 
 # Copa Filmes
 
