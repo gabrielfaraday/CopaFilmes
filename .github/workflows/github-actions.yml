@@ -1,0 +1,23 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: build & push backend
+      uses: docker/build-push-action@v1.1.0
+      with: 
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+        repository: ${{ secrets.DOCKER_HUB_REPO }}
+        path: ./copa-filmes-backend
+        tag_with_ref: true
