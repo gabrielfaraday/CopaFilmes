@@ -1,0 +1,26 @@
+name: .NET Core
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: build backend
+      uses: docker/build-push-action@v1.1.0
+      with: 
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+        repository: gabrielfbarros/copa-filmes
+        # Path to the build context
+        path: ./copa-filmes-backend
+        # Path to the Dockerfile (Default is '{path}/Dockerfile')
+        #dockerfile: # optional
+        tag_with_ref: true
