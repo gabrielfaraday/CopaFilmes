@@ -9,10 +9,18 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
     - uses: actions/checkout@v2
       
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v1.4.2
+      
+    - name: gera arquivos prod
+      run: |
+        npm install
+        ng build --prod
+    
     - name: build e push do frontend para Docker HUB
       uses: docker/build-push-action@v1.1.0
       with: 
