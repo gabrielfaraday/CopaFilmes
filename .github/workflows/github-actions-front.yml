@@ -20,6 +20,7 @@ jobs:
       run: |
         npm install
         ng build --prod
+      working-directory: ./copa-filmes-frontend
     
     - name: build e push do frontend para Docker HUB
       uses: docker/build-push-action@v1.1.0
