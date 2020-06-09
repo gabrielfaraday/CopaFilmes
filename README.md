@@ -1,4 +1,4 @@
-![CI/CD](https://github.com/gabrielfbarros/CopaFilmes/workflows/CI/CD/badge.svg)
+![CI/CD Front](https://github.com/gabrielfbarros/CopaFilmes/workflows/CI/CD%20Front/badge.svg)    ![CI/CD Back](https://github.com/gabrielfbarros/CopaFilmes/workflows/CI/CD%20Back/badge.svg)
 
 # Copa Filmes
 
